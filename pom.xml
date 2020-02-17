@@ -8,8 +8,8 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.architecture.with.amro</groupId>
-	<artifactId>api-security</artifactId>
+	<groupId>io.simplersoftware.learning</groupId>
+	<artifactId>auth-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>auth-service</name>
 	<description>Api authentication service with JWT tokens utilising RSA256 algorithm PKCS12 keystore. Using MySQL DB as a store for identities</description>

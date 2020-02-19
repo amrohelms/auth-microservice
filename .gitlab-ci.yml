@@ -3,8 +3,6 @@ docker-build-master:
 
   image: docker:latest
   stage: build
-  tags:
-    - runner
   services:
     - docker:dind
   before_script:

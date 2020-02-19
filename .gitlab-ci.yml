@@ -1,7 +1,5 @@
 docker-build-master:
   # Official docker image.
- tags:
-   - gitlab-runner
 
   image: docker:latest
   stage: build

@@ -3,7 +3,7 @@
 
 FROM maven:3-jdk-14 as builder
 
-ARG KEY_FILE=/keystore.p12
+ARG KEY_FILE=/var/keystore.p12
 ARG AUTH_SERVICE_KEYPAIR_SECRET=default
 ARG AWS_MYSQL_DB_PASSWORD=default
 
@@ -25,7 +25,7 @@ RUN mvn clean install
 
 FROM openjdk:8-jdk-alpine
 
-ARG KEY_FILE=/keystore.p12
+ARG KEY_FILE=/var/keystore.p12
 ARG AUTH_SERVICE_KEYPAIR_SECRET=default
 ARG AWS_MYSQL_DB_PASSWORD=default
 

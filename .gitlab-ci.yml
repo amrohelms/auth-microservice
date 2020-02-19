@@ -1,3 +1,6 @@
+tags:
+   - runner
+
 
 docker-build-master:
   # Official docker image.

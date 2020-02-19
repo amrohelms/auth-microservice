@@ -1,0 +1,35 @@
+docker-build-master:
+  # Official docker image.
+
+  image: docker:latest
+  variables:
+    DOCKER_DRIVER: overlay2
+  # Create the certificates inside this directory for both the server
+  # and client. The certificates used by the client will be created in
+  # /certs/client so we only need to share this directory with the
+  # volume mount in `config.toml`.
+    DOCKER_TLS_CERTDIR: "/certs"
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u amrohelms -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - docker build --pull -t simplersoftwareio/auth-service-docker .
+    - docker push simplersoftwareio/auth-service-docker
+  only:
+    - master
+
+docker-build:
+  # Official docker image.
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  except:
+    - master

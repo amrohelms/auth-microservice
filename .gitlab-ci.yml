@@ -3,6 +3,8 @@ docker-build-master:
 
   image: docker:latest
   stage: build
+    tags:
+    - windows
   services:
     - docker:dind
   before_script:
@@ -17,6 +19,8 @@ docker-build:
   # Official docker image.
   image: docker:latest
   stage: build
+    tags:
+    - windows
   services:
     - docker:dind
   before_script:

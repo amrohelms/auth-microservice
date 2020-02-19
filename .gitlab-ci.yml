@@ -1,7 +1,5 @@
-
 docker-build-master:
   # Official docker image.
-  job_name:
  tags:
    - gitlab-runner
 

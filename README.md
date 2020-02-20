@@ -17,9 +17,11 @@ Java 13, Spring, Maven
 `git clone https://github.com/simpler-software/auth-microservice.git`
 
 
+
 2. Generate the key pair
 
 `keytool -genkeypair -alias ServerKeyPair -keyalg RSA -keysize 2048 -validity 365 -storetype PKCS12 -keystore keystore.p12 -storepass <the secret, this value is used in the next step>`
+
 
 
 3. Set 2 system environment variables as follows
@@ -31,6 +33,7 @@ Java 13, Spring, Maven
 Move the generated certificate file to auth-microservice/src/main/resources/key/keystore.p12
 
 
+
 4. Set the mysql database connection properties in the auth-microservice/src/main/resources/application.properties
 
 `SPRING.DATASOURCE.URL`
@@ -38,11 +41,13 @@ Move the generated certificate file to auth-microservice/src/main/resources/key/
 `SPRING.DATASOURCE.USERNAME`
 
 
+
 5. Run the following docker command to build the image
 
 `docker build -t auth-service .`
 
 
-6- Run the service
+
+6. Run the service
 
 `docker run auth-service`

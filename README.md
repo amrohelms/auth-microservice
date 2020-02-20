@@ -6,7 +6,7 @@ Authentication microservice using Spring Rest API, Spring Security, JPA, MySQL, 
 The article explaining the service can be found [here](https://simplersoftware.io/secure-backend-apis-using-a-custom-authentication-microservice/).
 
 ## Technology
-Java 13, Spring, Maven
+Java 13, Spring, Docker, Maven
 
 ## Pre-requisites 
 - [Docker](https://www.docker.com/get-started) 

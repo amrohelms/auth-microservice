@@ -3,20 +3,32 @@
 ## Description
 Authentication microservice using Spring Rest API, Spring Security, JPA, MySQL, JWT and RSA Encryption.
 
-Full description of the code can be found [here](https://simplersoftware.io/secure-backend-apis-using-a-custom-authentication-microservice/).
+The article explaining the service can be found [here](https://simplersoftware.io/secure-backend-apis-using-a-custom-authentication-microservice/).
 
 ## Technology
 Java 13, Spring, Maven
 
 ## Pre-requisites 
-- JDK-8 or above should be installed and the JAVA_HOME environment variable should be set to the JDK home directory. For example: 
-`JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home`
-
-- Maven should be installed and the bin directory is added to the PATH environment variable. More information https://maven.apache.org/install.html
+- [Docker](https://www.docker.com/get-started) 
 
 ## How to run the service
 1. Download or clone the code
-`git clone https://github.com/SimplerSoftwareOrg/auth-microservice.git`
+`git clone https://github.com/simpler-software/auth-microservice.git`
 
-2. Set a system environment variable called 
-> Note: the access token .
+2. Generate the key pair
+`keytool -genkeypair -alias ServerKeyPair -keyalg RSA -keysize 2048 -validity 365 -storetype PKCS12 -keystore keystore.p12 -storepass <the secret, this value is used in the next step>`
+
+3. Set 2 system environment variables as follows
+`export AUTH_SERVICE_KEYPAIR_SECRET=<the secret used while generating the key pair in step 2>`
+`export AWS_MYSQL_DB_PASSWORD=<the password for your mysql database>`
+Move the generated certificate file to auth-microservice/src/main/resources/key/keystore.p12
+
+4. Set the mysql database connection properties in the auth-microservice/src/main/resources/application.properties
+`SPRING.DATASOURCE.URL`
+`SPRING.DATASOURCE.USERNAME`
+
+5. Run the following docker command to build the image
+`docker build -t auth-service .`
+
+6- Run the service
+`docker run auth-service`
